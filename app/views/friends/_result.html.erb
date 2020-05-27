@@ -1,0 +1,24 @@
+<div id="friend-lookup-errors" class="results-block">
+
+</div>
+<div id="friend-lookup-status" class="results-block">
+
+</div>
+
+<div id="friend-lookup-results" class="well results-block col-md-10 ng-hide" ng-show="friends.list.length > 0">
+  <table class="search-results-table col-md-12">
+    <tbody ng-repeat="friend in friends.list">
+      <tr>
+        <td><strong>Name:</strong> {{friend.first_name}} {{friend.last_name}}</td>
+        <td><strong>Email:</strong> {{friend.email}}</td>
+        <td><strong>Profile:</strong>
+          <a href="{{friend.profile_path}}" class="btn btn-xs btn-success">View Profile</a>
+          <a href="#" class="btn btn-xs btn-success">Add as my friend</a>
+          <span class="label label-primary">
+            {{friend.status}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

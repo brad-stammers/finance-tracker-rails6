@@ -1,0 +1,39 @@
+<h3>Search for Friends</h3>
+<div id="friend-lookup">
+  <form id="friend-lookup-form" ng-submit="lookup()">
+    <div class="form-group row no-padding text-center col-md-12">
+      <div class="col-md-10">
+        <input type="text" id="friend-search-param" placeholder="Enter name or email" class="form-control search-box input-lg" ng-model="friend-search-param" autofocus="true" />
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-lg btn-success"><i class="fa fa-search"></i> Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="results">
+  <div id="friend-lookup-errors" class="results-block alert alert-danger ng-hide" ng-show="friends.error">
+    {{friends.error}}
+  </div>
+  <div id="friend-lookup-status" class="results-block alert alert-success ng-hide" ng-show="friends.message">
+    {{friends.message}}
+  </div>
+
+  <div id="friend-lookup-results" class="well results-block col-md-10 ng-hide" ng-show="friends.list.length > 0">
+    <table class="search-results-table col-md-12">
+      <tbody ng-repeat="friend in friends.list">
+        <tr>
+          <td><strong>Name:</strong> {{friend.first_name}} {{friend.last_name}}</td>
+          <td><strong>Email:</strong> {{friend.email}}</td>
+          <td><strong>Profile:</strong>
+            <a href="{{friend.profile_path}}" class="btn btn-xs btn-success">View Profile</a>
+            <button class="btn btn-xs btn-success ng-hide" ng-click="add(friend.id)" ng-show="!friend.friends_already"> Add as my friend</button>
+            <span class="label label-primary ng-hide" ng-show="friend.friends_already">
+              Friend
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
